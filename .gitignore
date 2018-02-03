@@ -5,6 +5,9 @@ uploads
 2018-*
 config/initializers/app_keys.rb
 
+### React ###
+public/packs
+
 ### Node ###
 # Logs
 logs
