@@ -1,0 +1,2 @@
+class GetajobMailer < ApplicationMailer
+end
