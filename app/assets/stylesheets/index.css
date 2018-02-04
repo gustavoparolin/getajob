@@ -1,0 +1,14 @@
+.space {
+  margin-bottom: 10px;
+}
+
+.profile-photo {
+    border-radius: 50%;
+    border: 1px solid #c7d1d8;
+    height: 36px;
+    width: 36px;
+}
+
+.has-error > .help-block {
+  color: red;
+}
