@@ -44,6 +44,15 @@ gem 'font-awesome-sass'
 gem "animate-rails"
 gem 'simple_form'
 
+# LinkedIn, Address and profile needs
+gem 'jt-rails-address', '~> 1.0'
+gem 'linkedin'
+gem 'carrierwave', '~> 1.0'
+gem 'mini_magick'
+gem 'geocoder'
+gem 'gmaps4rails'
+gem 'underscore-rails'
+
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 

@@ -3,6 +3,13 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable, :recoverable, :rememberable, :trackable, :confirmable, :validatable
 
+  belongs_to :person, dependent: :delete
+  accepts_nested_attributes_for :person
+
+  def person
+    super || build_person
+  end
+
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-]+(\.[a-z\d\-]+)*\.[a-z]+\z/i
 
   validates :email, presence: true, uniqueness: true, format: VALID_EMAIL_REGEX
