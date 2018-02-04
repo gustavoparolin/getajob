@@ -1,14 +1,13 @@
-<%= simple_form_for(@board) do |f| %>
-  <%= f.error_notification %>
-
-  <div class="form-inputs">
+<%= semantic_form_for(@board) do |f| %>
+  <%= f.inputs  do %>
     <%= f.input :title %>
     <%= f.input :background_color %>
     <%= f.input :background_image %>
-    <%= f.input :status %>
-  </div>
+    <%= f.input :status, :as => :radio %>
+  <% end %>
 
-  <div class="form-actions">
-    <%= f.button :submit %>
-  </div>
+  <%= f.actions do %>
+    <%= f.action :submit, :as => :button %>
+    <%= f.action :cancel, :as => :link %>
+  <% end %>
 <% end %>
