@@ -30,11 +30,14 @@ gem 'jbuilder', '~> 2.5'
 # Use ActiveModel has_secure_password
 gem 'bcrypt', '~> 3.1.7'
 
-# Authorization and Authentication
+# Administration, Authorization and Authentication
+gem 'activeadmin'
 gem 'devise'
 gem 'cancancan'
 gem 'fog'
 gem 'jwt'
+gem 'country_select'
+
 
 # Bootstrap and Styling
 gem 'jquery-rails'
@@ -43,6 +46,8 @@ gem 'font-awesome-rails'
 gem 'font-awesome-sass'
 gem "animate-rails"
 gem 'simple_form'
+gem 'formtastic', '~> 3.0'
+gem 'kaminari'
 
 # LinkedIn, Address and profile needs
 gem 'jt-rails-address', '~> 1.0'
