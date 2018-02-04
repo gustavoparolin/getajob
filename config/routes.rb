@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  resources :people
   match '/client/', to: "client#index", via: :all
   match '/client/*path', to: "client#index", via: :all
 

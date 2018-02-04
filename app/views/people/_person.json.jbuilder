@@ -1,0 +1,2 @@
+json.extract! person, :id, :name, :alternate_name, :email, :image, :telephone, :mobile, :address_formatted_address, :address_street_number, :address_street_name, :address_street, :address_city, :address_zip_code, :address_department, :address_department_code, :address_state, :address_state_code, :address_country, :address_country_code, :address_lat, :address_lng, :headline, :summary, :current_position, :linkedin_profile, :twitter_profile, :created_at, :updated_at
+json.url person_url(person, format: :json)
