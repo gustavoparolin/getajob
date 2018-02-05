@@ -1,0 +1,14 @@
+<%= semantic_form_for @list do |f| %>
+  <%= f.inputs do %>
+    <%= f.input :title %>
+    <%= f.input :order %>
+    <%= f.input :background_color %>
+    <%= f.input :image, :as => :file %>
+    <%= f.input :status %>
+  <% end %>
+
+  <%= f.actions do %>
+    <%= f.action :submit, :as => :input %>
+    <%= f.action :cancel, :as => :link %>
+  <% end %>
+<% end %>

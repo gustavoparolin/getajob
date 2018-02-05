@@ -64,20 +64,20 @@ class BoardsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_board
-      @board = Board.friendly.find(params[:id])
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_board
+    @board = Board.friendly.find(params[:id])
+  end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def board_params
-      params.require(:board).permit(:title, :order, :background_color, :background_image, :status, :user_id, :slug)
-    end
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def board_params
+    params.require(:board).permit(:title, :order, :background_color, :background_image, :status, :user_id, :slug)
+  end
 
-    def authorize_user!
-      unless can?(:crud, @board)
-        flash[:alert] = "Access denied!"
-        redirect_to root_path
-      end
+  def authorize_user!
+    unless can?(:crud, @board)
+      flash[:alert] = "Access denied!"
+      redirect_to root_path
     end
+  end
 end

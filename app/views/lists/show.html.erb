@@ -1,0 +1,39 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Title:</strong>
+  <%= @list.title %>
+</p>
+
+<p>
+  <strong>Order:</strong>
+  <%= @list.order %>
+</p>
+
+<p>
+  <strong>Background color:</strong>
+  <%= @list.background_color %>
+</p>
+
+<p>
+  <strong>Image:</strong>
+  <%= @list.image %>
+</p>
+
+<p>
+  <strong>Status:</strong>
+  <%= @list.status %>
+</p>
+
+<p>
+  <strong>Slug:</strong>
+  <%= @list.slug %>
+</p>
+
+<p>
+  <strong>Board:</strong>
+  <%= @list.board %>
+</p>
+
+<%= link_to 'Edit', edit_list_path(@list) %> |
+<%= link_to 'Back', lists_path %>

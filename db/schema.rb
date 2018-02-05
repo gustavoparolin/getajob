@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180205065236) do
+ActiveRecord::Schema.define(version: 20180205101048) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -71,6 +71,21 @@ ActiveRecord::Schema.define(version: 20180205065236) do
     t.index ["sluggable_type"], name: "index_friendly_id_slugs_on_sluggable_type"
   end
 
+  create_table "lists", force: :cascade do |t|
+    t.string "title"
+    t.integer "order", default: 1
+    t.string "background_color"
+    t.string "image"
+    t.boolean "status"
+    t.string "slug"
+    t.bigint "board_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["board_id"], name: "index_lists_on_board_id"
+    t.index ["slug"], name: "index_lists_on_slug"
+    t.index ["title"], name: "index_lists_on_title"
+  end
+
   create_table "people", force: :cascade do |t|
     t.string "name"
     t.string "alternate_name"
@@ -104,7 +119,6 @@ ActiveRecord::Schema.define(version: 20180205065236) do
 
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
-    t.string "image"
     t.string "encrypted_password", default: "", null: false
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
@@ -124,6 +138,7 @@ ActiveRecord::Schema.define(version: 20180205065236) do
     t.string "api_key"
     t.bigint "person_id"
     t.string "slug"
+    t.string "image"
     t.index ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["person_id"], name: "index_users_on_person_id", unique: true
@@ -131,4 +146,5 @@ ActiveRecord::Schema.define(version: 20180205065236) do
   end
 
   add_foreign_key "boards", "users"
+  add_foreign_key "lists", "boards"
 end

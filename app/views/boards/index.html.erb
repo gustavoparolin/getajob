@@ -5,6 +5,7 @@
 <table>
   <thead>
     <tr>
+      <th>Order</th>
       <th>Title</th>
       <th>Background color</th>
       <th>Background image</th>
@@ -15,6 +16,7 @@
   <tbody>
     <% @boards.each do |board| %>
       <tr>
+        <td><%= board.order %></td>
         <td><%= board.title %></td>
         <td><%= board.background_color %></td>
         <td><%= board.background_image %></td>
