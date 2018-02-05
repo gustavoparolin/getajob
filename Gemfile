@@ -37,6 +37,7 @@ gem 'cancancan'
 gem 'fog'
 gem 'jwt'
 gem 'country_select'
+gem 'friendly_id', '~> 5.1.0'
 
 # Bootstrap and Styling
 gem 'jquery-rails'

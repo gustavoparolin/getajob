@@ -1,8 +1,8 @@
-ActiveAdmin.register Board do
+ActiveAdmin.register User do
 # See permitted parameters documentation:
 # https://github.com/activeadmin/activeadmin/blob/master/docs/2-resource-customization.md#setting-up-strong-parameters
 #
-permit_params :title, :order, :background_color, :background_image, :status, :user_id, :slug
+permit_params :email, :password, :password_confirmation, :slug
 #
 # or
 #
@@ -11,9 +11,11 @@ permit_params :title, :order, :background_color, :background_image, :status, :us
 #   permitted << :other if params[:action] == 'create' && current_user.admin?
 #   permitted
 # end
-  controller do
-    def find_resource
-      scoped_collection.friendly.find(params[:id])
-    end
+
+controller do
+  def find_resource
+    scoped_collection.friendly.find(params[:id])
   end
+end
+
 end

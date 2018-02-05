@@ -8,6 +8,9 @@ class User < ApplicationRecord
   belongs_to :person, dependent: :delete
   accepts_nested_attributes_for :person
 
+  extend FriendlyId
+  friendly_id :email, use: [:slugged, :history, :finders]
+
   def person
     super || build_person
   end
