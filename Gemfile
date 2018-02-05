@@ -38,7 +38,6 @@ gem 'fog'
 gem 'jwt'
 gem 'country_select'
 
-
 # Bootstrap and Styling
 gem 'jquery-rails'
 gem 'bootstrap'

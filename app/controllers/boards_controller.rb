@@ -1,10 +1,12 @@
 class BoardsController < ApplicationController
+  before_action :authenticate_user!
   before_action :set_board, only: [:show, :edit, :update, :destroy]
+  before_action :authorize_user!, only: [:edit, :update, :destroy]
 
   # GET /boards
   # GET /boards.json
   def index
-    @boards = Board.all
+    @boards = current_user.boards.order(order: :asc, created_at: :desc)
   end
 
   # GET /boards/1
@@ -70,5 +72,12 @@ class BoardsController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def board_params
       params.require(:board).permit(:title, :background_color, :background_image, :status, :user_id)
+    end
+
+    def authorize_user!
+      unless can?(:crud, @board)
+        flash[:alert] = "Access denied!"
+        redirect_to root_path
+      end
     end
 end
