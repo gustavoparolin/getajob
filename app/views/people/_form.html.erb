@@ -1,31 +1,30 @@
-<%= simple_form_for(@person) do |f| %>
-  <%= f.error_notification %>
-
-  <div class="form-inputs">
+<%= semantic_form_for(@person) do |f| %>
+  <%= f.inputs :name => "Basic" do %>
     <%= f.input :name %>
     <%= f.input :alternate_name %>
     <%= f.input :email %>
-    <%= f.input :image %>
-    <%= f.input :telephone %>
-    <%= f.input :mobile %>
-  </div>
-  <div class="form-inputs jt-address-autocomplete">
+    <%= f.input :image, :as => :file %>
+    <%= f.input :telephone, :as => :phone %>
+    <%= f.input :mobile, :as => :phone %>
+  <% end %>
+  <%= f.inputs :name => "Address", class:"jt-address-autocomplete" do %>
     <%= f.input :address, class: 'jt-address-search' %>
     <% for attr in JT::Rails::Address.fields %>
 			<%= f.hidden_field "address_#{attr}", class: "jt-address-field-#{attr}" %>
 		<% end %>
-  </div>
-  <div class="form-inputs">
-    <%= f.input :headline %>
+  <% end %>
+  <%= f.inputs :name => "Profile" do %>
+    <%= f.input :headline, :as => :text %>
     <%= f.input :summary %>
     <%= f.input :current_position %>
-    <%= f.input :linkedin_profile %>
-    <%= f.input :twitter_profile %>
-  </div>
+    <%= f.input :linkedin_profile, :as => :url %>
+    <%= f.input :twitter_profile, :as => :url %>
+  <% end %>
 
-  <div class="form-actions">
-    <%= f.button :submit %>
-  </div>
+  <%= f.actions do %>
+    <%= f.action :submit, :as => :button %>
+    <%= f.action :cancel, :as => :link %>
+  <% end %>
 <% end %>
 <!-- Load Google Maps and call googleMapInitialize when it's done -->
 <script async type="text/javascript" src="//maps.googleapis.com/maps/api/js?libraries=places&callback=googleMapInitialize&key=<%= ENV['GOOGLE_MAPS_API_KEY'] %>"></script>
