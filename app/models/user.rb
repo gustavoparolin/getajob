@@ -11,6 +11,8 @@ class User < ApplicationRecord
   extend FriendlyId
   friendly_id :email, use: [:slugged, :history, :finders]
 
+  mount_uploader :image, ImageUploader
+
   def person
     super || build_person
   end
