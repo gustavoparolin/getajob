@@ -21,6 +21,11 @@ class Ability
       user == list.board.user
     end
 
+    # can :crud, Card do |card|
+    #   can?(:crud, card.list)
+    #   # user == card.list.board.user
+    # end
+
     can :crud, User do |user1|
       user == user1
     end

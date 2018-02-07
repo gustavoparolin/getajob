@@ -1,7 +1,7 @@
 class ListsController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_list, only: [:show, :edit, :update, :destroy]
-  before_action :authorize_user!, only: [:edit, :update, :destroy]
+  before_action :set_board, only: [:create]
+  before_action :set_list, :authorize_user!, except: [:create]
 
   # GET /lists
   # GET /lists.json
@@ -27,30 +27,25 @@ class ListsController < ApplicationController
   # POST /lists
   # POST /lists.json
   def create
+    puts 'create'
     @list = List.new(list_params)
-    @list.board.user = current_user
-    respond_to do |format|
-      if @list.save
-        format.html { redirect_to @list, notice: 'List was successfully created.' }
-        format.json { render :show, status: :created, location: @list }
-      else
-        format.html { render :new }
-        format.json { render json: @list.errors, status: :unprocessable_entity }
-      end
+    @list.board = @board
+    # @board = lists.board
+    if @list.save
+      redirect_to board_path(@board), notice: 'List was successfully created.'
+    else
+      puts @list.errors.full_messages
+      redirect_to board_path(@board), notice: 'List not created.'
     end
   end
 
   # PATCH/PUT /lists/1
   # PATCH/PUT /lists/1.json
   def update
-    respond_to do |format|
-      if @list.update(list_params)
-        format.html { redirect_to @list, notice: 'List was successfully updated.' }
-        format.json { render :show, status: :ok, location: @list }
-      else
-        format.html { render :edit }
-        format.json { render json: @list.errors, status: :unprocessable_entity }
-      end
+    if @list.update(list_params)
+      redirect_to @board, notice: 'List was successfully updated.'
+    else
+      render :edit
     end
   end
 
@@ -58,10 +53,7 @@ class ListsController < ApplicationController
   # DELETE /lists/1.json
   def destroy
     @list.destroy
-    respond_to do |format|
-      format.html { redirect_to lists_url, notice: 'List was successfully destroyed.' }
-      format.json { head :no_content }
-    end
+    redirect_to @list.board, notice: 'List was successfully destroyed.'
   end
 
   private
@@ -69,14 +61,24 @@ class ListsController < ApplicationController
     @list = List.friendly.find(params[:id])
   end
 
+  def set_board
+    puts 'set board'
+    @board = Board.friendly.find(params[:board_id])
+    unless can?(:crud, @board)
+      flash[:alert] = "You cannot 'crud' lists!"
+      redirect_to board_path(@board)
+    end
+  end
+
   def list_params
     params.require(:list).permit(:title, :order, :background_color, :image, :status, :slug, :board_id)
   end
 
   def authorize_user!
+    puts 'suthorize user'
     unless can?(:crud, @list)
-      flash[:alert] = "Access denied!"
-      redirect_to root_path
+      flash[:alert] = "You cannot 'crud' lists!"
+      redirect_to board_path(@list.board)
     end
   end
 end

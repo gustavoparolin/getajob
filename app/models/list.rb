@@ -6,5 +6,5 @@ class List < ApplicationRecord
 
   mount_uploader :image, ImageUploader
 
-  validates :title, presence: true, uniqueness: true
+  # validates :title, presence: true
 end

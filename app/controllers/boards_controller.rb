@@ -12,7 +12,9 @@ class BoardsController < ApplicationController
   # GET /boards/1
   # GET /boards/1.json
   def show
-  end
+    @lists = @board.lists.order(order: :asc, created_at: :desc)
+  @list = List.new
+end
 
   # GET /boards/new
   def new

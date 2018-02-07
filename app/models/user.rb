@@ -4,9 +4,9 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable, :recoverable, :rememberable, :trackable, :confirmable, :validatable
 
   has_many :boards, dependent: :destroy
-  has_many :lists, through: :boards
+  # has_many :lists, through: :boards
 
-  belongs_to :person, dependent: :delete
+  belongs_to :person, dependent: :destroy
   accepts_nested_attributes_for :person
 
   extend FriendlyId

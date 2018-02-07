@@ -7,5 +7,5 @@ class Board < ApplicationRecord
 
   mount_uploader :background_image, ImageUploader
 
-  validates :title, presence: true, uniqueness: true
+  validates :title, presence: true
 end
