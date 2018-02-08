@@ -3,30 +3,22 @@ class BoardsController < ApplicationController
   before_action :set_board, only: [:show, :edit, :update, :destroy]
   before_action :authorize_user!, only: [:edit, :update, :destroy]
 
-  # GET /boards
-  # GET /boards.json
   def index
     @boards = current_user.boards.order(order: :asc, created_at: :desc)
   end
 
-  # GET /boards/1
-  # GET /boards/1.json
   def show
     @lists = @board.lists.order(order: :asc, created_at: :desc)
-  @list = List.new
-end
+    @list = List.new
+  end
 
-  # GET /boards/new
   def new
     @board = Board.new
   end
 
-  # GET /boards/1/edit
   def edit
   end
 
-  # POST /boards
-  # POST /boards.json
   def create
     @board = Board.new(board_params)
     @board.user = current_user
@@ -41,8 +33,6 @@ end
     end
   end
 
-  # PATCH/PUT /boards/1
-  # PATCH/PUT /boards/1.json
   def update
     respond_to do |format|
       if @board.update(board_params)
@@ -55,8 +45,6 @@ end
     end
   end
 
-  # DELETE /boards/1
-  # DELETE /boards/1.json
   def destroy
     @board.destroy
     respond_to do |format|

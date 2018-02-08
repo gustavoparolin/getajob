@@ -36,6 +36,8 @@ gem 'devise'
 gem 'cancancan'
 gem 'fog'
 gem 'jwt'
+gem 'rack-cors'
+gem 'active_model_serializers'
 gem 'country_select'
 gem 'friendly_id', '~> 5.1.0'
 

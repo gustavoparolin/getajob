@@ -1,6 +1,6 @@
 {
-  "application.js": "/packs/application-0833eeebfd1b22fa038c.js",
-  "application.js.map": "/packs/application-0833eeebfd1b22fa038c.js.map",
-  "client.js": "/packs/client-d7e8b43b1272e0e4d8a3.js",
-  "client.js.map": "/packs/client-d7e8b43b1272e0e4d8a3.js.map"
+  "application-lixo.js": "/packs/application-lixo-e3fa70b8a68ed8bd1e12.js",
+  "application-lixo.js.map": "/packs/application-lixo-e3fa70b8a68ed8bd1e12.js.map",
+  "client.js": "/packs/client-310d9d995ed3caae9ada.js",
+  "client.js.map": "/packs/client-310d9d995ed3caae9ada.js.map"
 }

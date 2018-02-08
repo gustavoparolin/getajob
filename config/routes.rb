@@ -21,4 +21,13 @@ Rails.application.routes.draw do
   match '/client/', to: "client#index", via: :all
   match '/client/*path', to: "client#index", via: :all
 
+  namespace :api, defaults: {format: :json} do
+    namespace :v1 do
+      resources :boards do
+        resources :lists, only: [:create, :destroy, :update]
+      end
+      resources :users, only: [:index, :show,:create,:destroy]
+      resources :tokens, only: [:create]
+    end
+  end
 end
