@@ -10,6 +10,7 @@
     <%= f.actions do %>
       <%= f.action :submit, :label => "Login", :as => :button %>
       <%= f.action :cancel, :as => :link %>
+      <%= link_to "Sign in with LinkedIn", user_linkedin_omniauth_authorize_path %>
     <% end %>
 <% end %>
 

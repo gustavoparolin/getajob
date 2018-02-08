@@ -14,6 +14,7 @@ Rails.application.routes.draw do
 
   devise_for :users, controllers: {
     sessions: 'user/sessions'
+    omniauth_callbacks: 'users/omniauth_callbacks' 
   }
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)

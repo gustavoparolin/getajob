@@ -40,6 +40,7 @@ gem 'rack-cors'
 gem 'active_model_serializers'
 gem 'country_select'
 gem 'friendly_id', '~> 5.1.0'
+gem 'omniauth-linkedin'
 
 # Bootstrap and Styling
 gem 'jquery-rails'
