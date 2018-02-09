@@ -28,11 +28,7 @@ class User < ApplicationRecord
   def self.from_omniauth(oauth_data)
 
     person = Person.where(email: oauth_data.info.email).first_or_create(
-<<<<<<< HEAD
       name: oauth_data.info.name,
-=======
-      name: oauth_data.info.first_name,
->>>>>>> 3de694fb6617e6772fe8fe99e12a0a57d46794cd
       alternate_name: oauth_data.info.nickname,
       email: oauth_data.info.email,
       image: oauth_data.info.image,
