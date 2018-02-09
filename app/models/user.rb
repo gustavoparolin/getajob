@@ -12,7 +12,7 @@ class User < ApplicationRecord
   extend FriendlyId
   friendly_id :email, use: [:slugged, :history, :finders]
 
-  mount_uploader :image, ImageUploader
+  # mount_uploader :image, ImageUploader
 
   def person
     super || build_person
@@ -22,7 +22,36 @@ class User < ApplicationRecord
 
   validates :email, presence: true, uniqueness: true, format: VALID_EMAIL_REGEX
 
+  serialize :oauth_raw_data
   before_create :generate_api_key
+
+  def self.from_omniauth(oauth_data)
+
+    person = Person.where(email: oauth_data.info.email).first_or_create(
+      name: oauth_data.info.name,
+      alternate_name: oauth_data.info.nickname,
+      email: oauth_data.info.email,
+      image: oauth_data.info.image,
+      telephone: oauth_data.info.phone,
+      address: oauth_data.info.location,
+      headline: oauth_data.info.description,
+      linkedin_profile: oauth_data.info.urls.public_profile
+    )
+
+    user = User.where(provider: oauth_data.provider, uid: oauth_data.uid).first_or_create(
+      person_id: person.id,
+      email: oauth_data.info.email,
+      image: oauth_data.info.image,
+      password: Devise.friendly_token[0,20],
+      uid: oauth_data["uid"],
+      provider: oauth_data["provider"],
+      oauth_token: oauth_data["credentials"]["token"],
+      oauth_raw_data: oauth_data
+    )
+
+    user.skip_confirmation!
+    user
+  end
 
   private
   def generate_api_key

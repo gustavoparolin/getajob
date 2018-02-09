@@ -19,17 +19,17 @@ class Api::V1::BoardsController < Api::ApplicationController
     @board = Board.new(board_params)
     @board.user = current_user
     if @board.save
-      render json: { message: 'Board was created', @board }
+      render json: @board
     else
-      render json: { message: 'Board was not created',  @board.errors.full_messages }, status: :unprocessable_entity
+      render json: @board.errors.full_messages, status: :unprocessable_entity
     end
   end
 
   def update
     if @board.update(board_params)
-      render json: { message: 'Board was updated', @board }
+      render json: @board
     else
-      render json: { message: 'Board was not updated',  @board.errors.full_messages }, status: :unprocessable_entity
+      render json: @board.errors.full_messages, status: :unprocessable_entity
     end
   end
 
@@ -54,7 +54,7 @@ class Api::V1::BoardsController < Api::ApplicationController
 
   def authorize_user!
     unless can?(:crud, @board)
-      render json: { message: 'You cannot manage boards',  @board.errors.full_messages }, status: :unprocessable_entity
+      render json: @board.errors.full_messages, status: :unprocessable_entity
     end
   end
 

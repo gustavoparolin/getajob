@@ -13,8 +13,8 @@ Rails.application.routes.draw do
   resources :people
 
   devise_for :users, controllers: {
-    sessions: 'user/sessions'
-    omniauth_callbacks: 'users/omniauth_callbacks' 
+    sessions: 'user/sessions',
+    omniauth_callbacks: 'user/omniauth_callbacks'
   }
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
