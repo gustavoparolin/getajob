@@ -25,6 +25,18 @@
   margin-left: 10px;
 }
 
+.menu-divider {
+  margin-top: 20px; 
+}
+
+.divider-text{
+  width:36px;
+  margin:-28px auto 8px;
+  padding-left:8px;
+  padding-right:8px;
+  background-color:#FFF
+}
+
 .navbar-brand {
   /*font-family: 'BioRhyme Expanded', serif !important;*/
   /*font-family: 'Barlow Condensed', sans-serif !important;*/
