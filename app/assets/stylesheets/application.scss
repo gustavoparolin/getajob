@@ -18,6 +18,12 @@
  *= require_self
  */
 
+ $theme-colors: (
+   "custom": #99099A
+ );
+
 @import "bootstrap";
 @import "font-awesome-sprockets";
 @import "animate";
+
+@import url('https://fonts.googleapis.com/css?family=Alfa+Slab+One|Archivo+Black|Barlow+Condensed:800|BioRhyme+Expanded:800|Bree+Serif|Dhurjati|Francois+One|Oswald|Play|Rammetto+One|Russo+One');

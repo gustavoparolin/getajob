@@ -1,14 +1,41 @@
 .space {
-  margin-bottom: 10px;
+  margin-top: 40px;
 }
 
 .profile-photo {
-    border-radius: 50%;
-    border: 1px solid #c7d1d8;
+    border-radius: 20%;
+    border: 3px solid #FFF;
     height: 36px;
     width: 36px;
 }
 
 .has-error > .help-block {
   color: red;
+}
+
+#inputSearch {
+  font-family: FontAwesome, Helvetica, sans-serif;
+  margin-left: 20px;
+}
+
+.navbar-dark .navbar-nav .nav-link {
+  color: rgba(255, 255, 255, 1) !important;
+}
+.nav-item, .btn-menu {
+  margin-left: 10px;
+}
+
+.navbar-brand {
+  /*font-family: 'BioRhyme Expanded', serif !important;*/
+  /*font-family: 'Barlow Condensed', sans-serif !important;*/
+  /*font-family: 'Oswald', sans-serif !important;*/
+  /*font-family: 'Rammetto One', cursive !important;*/
+  /*font-family: 'Dhurjati', sans-serif !important;*/
+  /*font-family: 'Bree Serif', serif !important;*/
+  /*font-family: 'Play', sans-serif !important;*/
+  /*font-family: 'Francois One', sans-serif !important;*/
+  font-family: 'Archivo Black', sans-serif !important;
+  /*font-family: 'Russo One', sans-serif !important;*/
+  /*font-family: 'Alfa Slab One', cursive !important;*/
+  font-size: 2rem !important;
 }
