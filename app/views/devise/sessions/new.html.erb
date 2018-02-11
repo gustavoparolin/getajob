@@ -1,9 +1,9 @@
-<form class="form-signin my-3 p-3 bg-white rounded box-shadow" action="<%= session_path(resource_name) %>" id="new_user" accept-charset="UTF-8" method="post">
+<form novalidate="novalidate" class="form-signin my-3 p-3 bg-white rounded box-shadow" action="<%= session_path(resource_name) %>" id="new_user" accept-charset="UTF-8" method="post">
 
   <input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
 
   <div class="text-center mb-4">
-    <h1 class="h3 mb-3 font-weight-normal">Login</h1>
+    <h1 class="h3 mb-3 font-weight-normal">Login / New Session</h1>
   </div>
   <div class="form-label-group">
     <input id="user_email" class="form-control" type="email" name="user[email]"  placeholder="Email address" required>
@@ -36,7 +36,7 @@
       <div class="divider-text text-sm text-muted">OR</div>
     </div>
 
-    <a class="btn btn-lg btn-outline-linkedin btn-inline" href="<%= user_linkedin_omniauth_authorize_path %>"><i class="fa fa-linkedin-square" aria-hidden="true"></i> Login with LinkedIn</a>
+    <a class="btn btn-sm btn-outline-linkedin btn-inline" href="<%= user_linkedin_omniauth_authorize_path %>"><i class="fa fa-linkedin-square" aria-hidden="true"></i> Login with LinkedIn</a>
 
     <div class="menu-divider">
       <hr>

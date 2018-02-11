@@ -1,20 +1,47 @@
-<h2>Sign up</h2>
+<form novalidate="novalidate" class="form-signin my-3 p-3 bg-white rounded box-shadow" action="<%= registration_path(resource_name) %>" id="new_user" accept-charset="UTF-8" method="post">
 
-<%= semantic_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-  <%= f.inputs do %>
-    <%= f.fields_for :person do |p| %>
-      <%= p.input :name, required: true, autofocus: true %>
-    <% end %>
-    <%= f.input :email, required: true %>
-    <%= f.input :password, required: true, hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length) %>
-    <%= f.input :password_confirmation, required: true %>
-    <%= f.input :image, :as => :file %>
-  <% end %>
+  <input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
 
-  <%= f.actions do %>
-    <%= f.action :submit, :label => "Sign Up", :as => :button %>
-    <%= f.action :cancel, :as => :link %>
-  <% end %>
-<% end %>
+  <div class="text-center mb-4">
+    <h1 class="h3 mb-3 font-weight-normal">Sign Up</h1>
+  </div>
 
-<%= render "devise/shared/links" %>
+  <div class="form-label-group">
+    <input id="user_person_attributes_name_input" class="form-control" type="email" name="user[person_attributes][name]" placeholder="Name" required autofocus>
+    <label for="user_person_attributes_name_input">Name</label>
+  </div>
+
+  <div class="form-label-group">
+    <input id="user_email_input" class="form-control" type="email" name="user[email]"  placeholder="Email address" required>
+    <label for="user_email_input">Email address</label>
+  </div>
+
+  <div class="form-label-group">
+    <input maxlength="128" id="user_password" type="password" name="user[password]" class="form-control" placeholder="Password" required>
+    <label for="user_password">Password</label>
+  </div>
+
+  <div class="form-label-group">
+    <input maxlength="128" id="user_password_confirmation" type="password" name="user[password_confirmation]" class="form-control" placeholder="Password" required>
+    <label for="user_password_confirmation">Password confirmation</label>
+  </div>
+
+  <div class="text-center mb-4">
+    <button class="btn btn-lg btn-custom btn-block" type="submit">Sign Up</button>
+
+    <div class="menu-divider">
+      <hr>
+      <div class="divider-text text-sm text-muted">OR</div>
+    </div>
+
+    <%- if controller_name != 'sessions' %>
+      <%= link_to "Login", new_session_path(resource_name), class: "btn btn-sm btn-outline-custom btn-inline" %>
+    <% end -%>
+
+    <%- if devise_mapping.omniauthable? %>
+      <a class="btn btn-sm btn-outline-linkedin btn-inline" href="<%= user_linkedin_omniauth_authorize_path %>"><i class="fa fa-linkedin-square" aria-hidden="true"></i> Login with LinkedIn</a>
+    <% end -%>
+
+
+  </div>
+</form>

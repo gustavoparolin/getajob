@@ -1,7 +1,5 @@
 Rails.application.routes.draw do
 
-  root 'home#index'
-
   resources :boards do
     resources :lists, shallow: true, only: [:create, :destroy, :update] do
       resources :cards, shallow: true, only: [:create, :destroy, :update] do
@@ -12,6 +10,9 @@ Rails.application.routes.draw do
   end
   resources :people
 
+  devise_scope :user do
+    root to: "devise/sessions#new"
+  end
   devise_for :users, controllers: {
     sessions: 'user/sessions',
     omniauth_callbacks: 'user/omniauth_callbacks'

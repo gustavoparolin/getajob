@@ -1,4 +1,5 @@
 class BoardsController < ApplicationController
+  layout "board"
   before_action :authenticate_user!
   before_action :set_board, only: [:show, :edit, :update, :destroy]
   before_action :authorize_user!, only: [:edit, :update, :destroy]

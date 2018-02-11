@@ -1,15 +1,41 @@
-<h2>Forgot your password?</h2>
+<form novalidate="novalidate" class="form-signin my-3 p-3 bg-white rounded box-shadow" action="<%= password_path(resource_name) %>" id="new_user" accept-charset="UTF-8" method="post">
 
-<%= simple_form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
-  <%= f.error_notification %>
+  <input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
 
-  <div class="form-inputs">
-    <%= f.input :email, required: true, autofocus: true %>
+  <div class="text-center mb-4">
+    <h1 class="h3 mb-3 font-weight-normal">Forgot your password?</h1>
   </div>
 
-  <div class="form-actions">
-    <%= f.button :submit, "Send me reset password instructions" %>
+  <div class="form-label-group">
+    <input id="user_email_input" class="form-control" type="email" name="user[email]"  placeholder="Email address" required autofocus>
+    <label for="user_email_input">Email address</label>
   </div>
-<% end %>
 
-<%= render "devise/shared/links" %>
+  <div class="text-center mb-4">
+    <button class="btn btn-lg btn-custom btn-block" type="submit">Reset Password</button>
+
+    <div class="menu-divider">
+      <hr>
+      <div class="divider-text text-sm text-muted">OR</div>
+    </div>
+
+    <%- if controller_name != 'sessions' %>
+      <%= link_to "Login", new_session_path(resource_name), class: "btn btn-sm btn-outline-custom btn-inline" %>
+    <% end -%>
+    <%- if devise_mapping.registerable? && controller_name != 'registrations' %>
+      <%= link_to "Sign up", new_registration_path(resource_name), class: "btn btn-sm btn-outline-custom btn-inline" %>
+    <% end -%>
+
+    <div class="menu-divider">
+      <hr>
+      <div class="divider-text text-sm text-muted">OR</div>
+    </div>
+
+    <%- if devise_mapping.omniauthable? %>
+      <a class="btn btn-lg btn-outline-linkedin btn-inline" href="<%= user_linkedin_omniauth_authorize_path %>"><i class="fa fa-linkedin-square" aria-hidden="true"></i> Login with LinkedIn</a>
+    <% end -%>
+  </div>
+  <%- if devise_mapping.confirmable? && controller_name != 'confirmations' %>
+    <%= link_to "Didn't receive confirmation instructions?", new_confirmation_path(resource_name) %><br />
+  <% end -%>
+</form>
