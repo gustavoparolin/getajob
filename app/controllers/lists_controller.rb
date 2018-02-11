@@ -40,6 +40,11 @@ class ListsController < ApplicationController
     redirect_to @list.board, notice: 'List was successfully destroyed.'
   end
 
+  def move
+    @list.insert_at(list_params[ :position ].to_i)
+    render action: :show
+  end
+
   private
   def set_list
     @list = List.friendly.find(params[:id])

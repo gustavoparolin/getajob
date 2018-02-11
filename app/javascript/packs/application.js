@@ -50,7 +50,8 @@ import App from '../app.vue'
 //     }
 //   }
 // })
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener("turbolinks:load", function() {
+// document.addEventListener('DOMContentLoaded', function() {
   var element = document.querySelector("#boards")
   if (element != undefined) {
     // window.store.state.lists = JSON.parse(element.dataset.lists)
