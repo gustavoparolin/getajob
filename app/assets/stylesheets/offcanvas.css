@@ -4,8 +4,9 @@ body {
 }
 
 body {
-  padding-top: 56px;
+  /*padding-top: 60px;*/
 }
+
 
 @media (max-width: 767.98px) {
   .offcanvas-collapse {

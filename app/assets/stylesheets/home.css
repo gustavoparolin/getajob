@@ -1,0 +1,77 @@
+#homeMain{
+  height: 100vh;
+  width: 100%;
+  background: url('/assets/bg.jpg');
+	background-size: cover;
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+#homeContent {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  height: 100vh;
+}
+
+#homeTextContainer {
+  width: calc(90% - 350px);
+  min-width: 350px;
+  max-height: 570px;
+  background-color: rgba(0,0,0,0.7);
+  border-radius: 15px;
+  margin: 20px;
+  padding: 30px 20px;
+  display: flex;
+}
+
+#homeText{
+  color: white;
+  font-family: fantasy;
+  margin: 20px;
+  align-self: center;
+}
+#homeText h1 {
+  font-size: 3.5em !important;
+  margin-top: -50px;
+}
+
+#homeForm{
+  width: 350px;
+  height: 570px;
+  border-radius: 8px;
+  margin: 20px;
+}
+
+/* Medium devices (tablets, less than 992px)*/
+@media  (max-width: 991px) {
+  #homeTextContainer {
+    order: 2;
+  }
+  #homeText{
+    font-size: .7em !important;
+  }
+  #homeText h3 {
+    font-size: 1.4rem !important;
+  }
+  #homeText h1 {
+    font-size: 2.8rem !important;
+  }
+}
+
+/* Large devices (desktops, less than 1200px)*/
+@media (min-width: 992px) and (max-width: 1199px) {
+  #homeTextContainer {
+    height: 570px;
+  }
+  #homeText{
+    font-size: .8em !important;
+  }
+  #homeText h3 {
+    font-size: 1.6rem !important;
+  }
+  #homeText h1 {
+    font-size: 3.2rem !important;
+  }
+}
