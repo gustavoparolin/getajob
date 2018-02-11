@@ -1,10 +1,14 @@
 class List < ApplicationRecord
+  acts_as_list scope: :board
+
   belongs_to :board
+  has_many :cards, -> { order(position: :asc)}, dependent: :destroy
 
   extend FriendlyId
-  friendly_id :title, use: [:slugged, :history, :finders]
+  friendly_id :name, use: [:slugged, :history, :finders]
 
-  mount_uploader :image, ImageUploader
+  # mount_uploader :image, ImageUploader
 
-  # validates :title, presence: true
+  scope :sorted, -> { order(position: :asc)}
+  validates :name, presence: true
 end

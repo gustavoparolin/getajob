@@ -51,6 +51,7 @@ gem "animate-rails"
 gem 'simple_form'
 gem 'formtastic', '~> 3.0'
 gem 'kaminari'
+gem 'acts_as_list'
 
 # LinkedIn, Address and profile needs
 gem 'jt-rails-address', '~> 1.0'

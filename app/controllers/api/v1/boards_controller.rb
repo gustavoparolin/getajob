@@ -49,7 +49,7 @@ class Api::V1::BoardsController < Api::ApplicationController
   end
 
   def board_params
-    params.require(:board).permit(:title, :order, :background_color, :background_image, :status, :user_id, :slug)
+    params.require(:board).permit(:name, :position, :background_color, :background_image, :status, :user_id, :slug)
   end
 
   def authorize_user!

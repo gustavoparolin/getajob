@@ -50,8 +50,29 @@ class User < ApplicationRecord
     )
 
     user.skip_confirmation!
+    # create_initial_boards (user.id)
     user
   end
+
+  # def create_initial_boards (user_id)
+  #   board = Board.create(
+  #     name: 'My first board',
+  #     background_color: 'green',
+  #     user_id: user_id
+  #   )
+  #
+  #   lists = ['WISHLIST','APPLIED','INTERVIEW','OFFER','REJECTED']
+  #   for i in 0..4 do
+  #     List.create(
+  #       name: lists[i],
+  #       order: i+1,
+  #       background_color: Faker::Color.color_name,
+  #       board_id: board.id
+  #     )
+  #   end
+  #
+  #
+  # end
 
   private
   def generate_api_key

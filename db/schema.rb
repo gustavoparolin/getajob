@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180208173348) do
+ActiveRecord::Schema.define(version: 20180211075932) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -47,16 +47,28 @@ ActiveRecord::Schema.define(version: 20180208173348) do
   end
 
   create_table "boards", force: :cascade do |t|
-    t.string "title"
+    t.string "name"
     t.string "background_color"
     t.string "background_image"
     t.boolean "status"
     t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "order", default: 1
+    t.integer "position", default: 1
     t.string "slug"
     t.index ["user_id"], name: "index_boards_on_user_id"
+  end
+
+  create_table "cards", force: :cascade do |t|
+    t.string "name"
+    t.integer "position"
+    t.string "slug"
+    t.bigint "list_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["list_id"], name: "index_cards_on_list_id"
+    t.index ["name"], name: "index_cards_on_name"
+    t.index ["slug"], name: "index_cards_on_slug"
   end
 
   create_table "friendly_id_slugs", force: :cascade do |t|
@@ -72,8 +84,8 @@ ActiveRecord::Schema.define(version: 20180208173348) do
   end
 
   create_table "lists", force: :cascade do |t|
-    t.string "title"
-    t.integer "order", default: 1
+    t.string "name"
+    t.integer "position", default: 1
     t.string "background_color"
     t.string "image"
     t.boolean "status"
@@ -82,8 +94,8 @@ ActiveRecord::Schema.define(version: 20180208173348) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["board_id"], name: "index_lists_on_board_id"
+    t.index ["name"], name: "index_lists_on_name"
     t.index ["slug"], name: "index_lists_on_slug"
-    t.index ["title"], name: "index_lists_on_title"
   end
 
   create_table "people", force: :cascade do |t|
@@ -152,5 +164,6 @@ ActiveRecord::Schema.define(version: 20180208173348) do
   end
 
   add_foreign_key "boards", "users"
+  add_foreign_key "cards", "lists"
   add_foreign_key "lists", "boards"
 end

@@ -4,7 +4,7 @@ class ListsController < ApplicationController
   before_action :set_list, :authorize_user!, except: [:create]
 
   def index
-    @lists = current_user.lists.order(order: :asc, created_at: :desc)
+    @lists = current_user.lists.sorted
   end
 
   def show
@@ -54,7 +54,7 @@ class ListsController < ApplicationController
   end
 
   def list_params
-    params.require(:list).permit(:title, :order, :background_color, :image, :status, :slug, :board_id)
+    params.require(:list).permit(:name, :position, :background_color, :image, :status, :slug, :board_id)
   end
 
   def authorize_user!
