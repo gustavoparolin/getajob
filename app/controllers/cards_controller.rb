@@ -22,7 +22,7 @@ class CardsController < InheritedResources::Base
     respond_to do |format|
       if @card.save
 
-        ActionCable.server.broadcast "board", { commit: 'addCard', payload: render_to_string(:show, format: :json) }
+        # ActionCable.server.broadcast "board", { commit: 'addCard', payload: render_to_string(:show, format: :json) }
 
         format.html { redirect_to @card, notice: 'Card was successfully created.' }
         format.json { render :show, status: :created, location: @card }

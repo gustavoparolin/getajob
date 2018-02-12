@@ -9,7 +9,7 @@ class BoardsController < ApplicationController
   end
 
   def show
-    @lists = @board.lists.order(position: :asc, created_at: :desc)
+    @lists = @board.lists.sorted
     @list = List.new
   end
 

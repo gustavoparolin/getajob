@@ -14,7 +14,7 @@
   <body class="bg-light">
 
     <nav class="navbar navbar-expand-md fixed-top navbar-dark" style="background-color: #99099a;">
-      <div class="container">
+      <div class="container-fluid">
       <% if user_signed_in? %>
         <form class="form-inline my-2 my-lg-0 form-search">
           <div class="input-group mb-2">
@@ -81,7 +81,7 @@
     </div>
     </nav>
 
-    <main role="main" class="container space">
+    <main role="main" class="container-fluid space">
       <% if flash[:alert].present? %>
         <div class="alert alert-danger alert-dismissible fade show" role="alert">
           <%= flash[:alert] %>

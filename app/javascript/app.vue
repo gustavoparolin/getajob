@@ -1,8 +1,7 @@
 <template>
-  <draggable v-model="lists" :options="{ group: 'lists' }" class="row dragArea" @end="listMoved">
-    <div v-for="(list, index) in original_lists" class="col-3">
-      <h6>{{ list.name }}</h6>
-      <hr>
+  <draggable v-model="lists" :options="{ group: 'lists' }" class="board dragArea" @end="listMoved">
+    <div v-for="(list, index) in original_lists" class="list">
+      <h6>{{ list.position }} - {{ list.name }}</h6>
 
       <draggable v-model="list.cards" :options="{ group: 'cards' }" class="dragArea" @change="cardMoved">
         <div v-for="(card, index) in list.cards" class="card card-body mb-3">
@@ -10,10 +9,8 @@
         </div>
       </draggable>
 
-      <div class="card card-body">
-        <textarea v-model="messages[list.id]" class="form-control"></textarea>
+        <textarea v-model="messages[list.id]" class="form-control mb-1"></textarea>
         <button v-on:click="submitMessages(list.id)" class="btn btn-secondary">Add</button>
-      </div>
     </div>
   </draggable>
 </template>
@@ -37,18 +34,18 @@ export default {
       if (evt == undefined) { return }
 
       const element = evt.element
-
       const list_index = this.lists.findIndex((list) => {
         return list.cards.find((card) => {
           return card.id === element.id
         })
       })
+
       var data = new FormData
       data.append("card[list_id]", this.lists[list_index].id)
       data.append("card[position]", evt.newIndex + 1)
 
       Rails.ajax({
-        url: `/cards/${element.id}/move`,
+        url: `/boards/${this.lists[list_index].board_id}/cards/${element.id}/move`,
         type: "PATCH",
         data: data,
         dataType: "json",
@@ -60,7 +57,7 @@ export default {
       data.append("list[position]", event.newIndex + 1)
 
       Rails.ajax({
-        url: `/boards/board-42e9e03d-620c-41cc-a982-5ca2231fbbcf/lists/${this.lists[event.newIndex].id}/move`,
+        url: `/boards/${this.lists[event.newIndex].board_id}/lists/${this.lists[event.newIndex].slug}/move`,
         type: "PATCH",
         data: data,
         dataType: "json",
@@ -71,8 +68,11 @@ export default {
       var data = new FormData
       data.append("card[list_id]", list_id)
       data.append("card[name]", this.messages[list_id])
+
+      if (this.messages[list_id] == undefined) { return }
+
       Rails.ajax({
-        url: "/cards",
+        url: `/lists/${list_id}/cards`,
         type: "POST",
         data: data,
         dataType: "json",
@@ -88,7 +88,20 @@ export default {
 </script>
 
 <style scoped>
-  .dragArea{
-    min-height: 10px;
+  .dragArea {
+    min-height: 30px;
+  }
+  .board {
+    overflow-x: auto;
+    white-space: nowrap;
+  }
+  .list {
+    background: #E2E4E6;
+    border-radius: 3px;
+    display: inline-block;
+    margin-right: 20px;
+    padding: 10px;
+    vertical-align: top;
+    width: 270px;
   }
 </style>

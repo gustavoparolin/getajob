@@ -11,12 +11,12 @@ Rails.application.routes.draw do
         patch :move
       end
     end
-    # resources :lists, shallow: true, only: [:create, :destroy, :update] do
-    #   resources :cards, shallow: true, only: [:create, :destroy, :update] do
-    #     resources :notes, shallow: true, only: [:create, :destroy, :update]
-    #     resources :tasks, shallow: true, only: [:create, :destroy, :update]
-    #   end
-    # end
+    resources :lists, shallow: true, only: [:create, :destroy] do
+      resources :cards, shallow: true, only: [:create, :destroy, :update] do
+        # resources :notes, shallow: true, only: [:create, :destroy, :update]
+        # resources :tasks, shallow: true, only: [:create, :destroy, :update]
+      end
+    end
   end
   resources :people
 
