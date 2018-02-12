@@ -4,7 +4,7 @@ class ListsController < ApplicationController
   before_action :set_list, :authorize_user!, except: [:create]
 
   def index
-    @lists = current_user.lists.order(order: :asc, created_at: :desc)
+    @lists = current_user.lists.sorted
   end
 
   def show
@@ -20,24 +20,45 @@ class ListsController < ApplicationController
   def create
     @list = List.new(list_params)
     @list.board = @board
-    if @list.save
-      redirect_to board_path(@board), notice: 'List was successfully created.'
-    else
-      redirect_to board_path(@board), notice: 'List not created.'
+
+    respond_to do |format|
+      if @list.save
+
+        ActionCable.server.broadcast "board", { commit: 'addList', payload: render_to_string(:show, format: :json) }
+
+        format.html { redirect_to board_path(@board), notice: 'List was successfully created.' }
+        format.json { render :show, status: :created, location: @list }
+      else
+        format.html { redirect_to board_path(@board), notice: 'List not created.' }
+        format.json { render json: @list.errors, status: :unprocessable_entity }
+      end
     end
   end
 
   def update
-    if @list.update(list_params)
-      redirect_to @board, notice: 'List was successfully updated.'
-    else
-      render :edit
+    respond_to do |format|
+      if @list.update(list_params)
+        format.html { redirect_to @board, notice: 'List was successfully updated.' }
+        format.json { render :show, status: :ok, location: @list }
+      else
+        format.html { render :edit }
+        format.json { render json: @list.errors, status: :unprocessable_entity }
+      end
     end
   end
 
   def destroy
     @list.destroy
-    redirect_to @list.board, notice: 'List was successfully destroyed.'
+    respond_to do |format|
+      format.html { redirect_to @list.board, notice: 'List was successfully destroyed.' }
+      format.json { head :no_content }
+    end
+  end
+
+  def move
+    @list.insert_at(list_params[:position].to_i)
+    ActionCable.server.broadcast "board", { commit: 'moveList', payload: render_to_string(:show, format: :json) }
+    render action: :show
   end
 
   private
@@ -54,7 +75,7 @@ class ListsController < ApplicationController
   end
 
   def list_params
-    params.require(:list).permit(:title, :order, :background_color, :image, :status, :slug, :board_id)
+    params.require(:list).permit(:name, :position, :background_color, :image, :status, :slug, :board_id)
   end
 
   def authorize_user!

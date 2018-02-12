@@ -52,7 +52,7 @@ class Api::V1::ListsController < Api::ApplicationController
   end
 
   def list_params
-    params.require(:list).permit(:title, :order, :background_color, :image, :status, :slug, :board_id)
+    params.require(:list).permit(:name, :position, :background_color, :image, :status, :slug, :board_id)
   end
 
   def authorize_user!

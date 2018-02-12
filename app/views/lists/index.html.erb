@@ -6,8 +6,8 @@
   <thead>
     <tr>
       <th>Board</th>
-      <th>Order</th>
-      <th>Title</th>
+      <th>Position</th>
+      <th>Name</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -15,11 +15,11 @@
   <tbody>
     <% @lists.each do |list| %>
       <tr>
-        <td><%= list.board.title %></td>
-        <td><%= list.order %></td>
-        <td><%= list.title %></td>
+        <td><%= list.board.name %></td>
+        <td><%= list.position %></td>
+        <td><%= list.name %></td>
         <td><%= link_to 'Show', list %></td>
-        <td><%= link_to 'Edit', edit_list_path(list) %></td>
+        <td><%= link_to 'Edit', list_path(list) %></td>
         <td><%= link_to 'Destroy', list, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>

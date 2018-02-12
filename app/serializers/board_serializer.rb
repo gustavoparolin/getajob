@@ -1,5 +1,5 @@
 class BoardSerializer < ActiveModel::Serializer
-  attributes :id, :title, :background_color, :background_image, :status, :user_id, :created_at, :updated_at, :order, :slug
+  attributes :id, :name, :position, :background_color, :background_image, :status, :user_id, :created_at, :updated_at, :slug
 
   belongs_to :user
 
@@ -9,6 +9,6 @@ class BoardSerializer < ActiveModel::Serializer
 
   has_many :lists
   class ListSerializer < ActiveModel::Serializer
-    attributes :id, :title, :order, :background_color, :image, :status, :slug, :board_id, :created_at, :updated_at
+    attributes :id, :name, :position, :background_color, :image, :status, :slug, :board_id, :created_at, :updated_at
   end
 end

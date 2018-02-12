@@ -5,11 +5,11 @@ class BoardsController < ApplicationController
   before_action :authorize_user!, only: [:edit, :update, :destroy]
 
   def index
-    @boards = current_user.boards.order(order: :asc, created_at: :desc)
+    @boards = current_user.boards.sorted
   end
 
   def show
-    @lists = @board.lists.order(order: :asc, created_at: :desc)
+    @lists = @board.lists.sorted
     @list = List.new
   end
 
@@ -62,7 +62,7 @@ class BoardsController < ApplicationController
 
   # Never trust parameters from the scary internet, only allow the white list through.
   def board_params
-    params.require(:board).permit(:title, :order, :background_color, :background_image, :status, :user_id, :slug)
+    params.require(:board).permit(:name, :position, :background_color, :background_image, :status, :user_id, :slug)
   end
 
   def authorize_user!

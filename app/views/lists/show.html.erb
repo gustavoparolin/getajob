@@ -1,13 +1,13 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <strong>Title:</strong>
-  <%= @list.title %>
+  <strong>Name:</strong>
+  <%= @list.name %>
 </p>
 
 <p>
-  <strong>Order:</strong>
-  <%= @list.order %>
+  <strong>Position:</strong>
+  <%= @list.position %>
 </p>
 
 <p>
@@ -35,5 +35,4 @@
   <%= @list.board %>
 </p>
 
-<%= link_to 'Edit', edit_list_path(@list) %> |
-<%= link_to 'Back', lists_path %>
+<%= link_to 'Edit', list_path(@list) %> |

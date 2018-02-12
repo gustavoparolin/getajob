@@ -1,10 +1,20 @@
 Rails.application.routes.draw do
 
+  resources :lists, only: [] do
+    member do
+      patch :move
+    end
+  end
+  resources :cards, only: [:create, :update] do
+    member do
+      patch :move
+    end
+  end
   resources :boards do
-    resources :lists, shallow: true, only: [:create, :destroy, :update] do
-      resources :cards, shallow: true, only: [:create, :destroy, :update] do
-        resources :notes, shallow: true, only: [:create, :destroy, :update]
-        resources :tasks, shallow: true, only: [:create, :destroy, :update]
+    resources :lists, shallow: true, only: [:create, :destroy] do
+      resources :cards, shallow: true, only: [:destroy] do
+        # resources :notes, shallow: true, only: [:create, :destroy, :update]
+        # resources :tasks, shallow: true, only: [:create, :destroy, :update]
       end
     end
   end

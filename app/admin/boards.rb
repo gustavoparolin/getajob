@@ -2,7 +2,7 @@ ActiveAdmin.register Board do
 # See permitted parameters documentation:
 # https://github.com/activeadmin/activeadmin/blob/master/docs/2-resource-customization.md#setting-up-strong-parameters
 #
-permit_params :title, :order, :background_color, :background_image, :status, :user_id, :slug
+permit_params :name, :position, :background_color, :background_image, :status, :user_id, :slug
 #
 # or
 #
