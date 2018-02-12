@@ -91,13 +91,5 @@ export default {
 .dragArea {
   min-height: 30px;
 }
-.list {
-  background: #E2E4E6;
-  border-radius: 3px;
-  display: inline-block;
-  margin-right: 20px;
-  padding: 10px;
-  vertical-align: top;
-  width: 270px;
-}
+
 </style>

@@ -14,4 +14,4 @@
 <% end %>
 
 <h3>Lists</h3>
-<%= tag.div id: :boards, data: {lists: @lists.to_json(include: :cards)} %>
+<%= tag.div id: :boards, data: { board_id: @board.id , lists: @lists.to_json(include: :cards)} %>
