@@ -67,13 +67,12 @@ export default {
       if (this.message == undefined) { return }
 
       Rails.ajax({
-        url: `/lists`,
+        url: `/boards/26/lists`,
         // url: `/boards/${this.board.id}/lists`,
         type: "POST",
         data: data,
         dataType: "json",
         success: (data) => {
-          this.$store.commit('addList', data)
           this.message = ""
           this.editing = false
         }

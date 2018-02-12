@@ -21,6 +21,9 @@ class ListsController < ApplicationController
     @list = List.new(list_params)
     @list.board = @board
     if @list.save
+
+      ActionCable.server.broadcast "board", { commit: 'addList', payload: render_to_string(:show, format: :json) }
+
       redirect_to board_path(@board), notice: 'List was successfully created.'
     else
       redirect_to board_path(@board), notice: 'List not created.'

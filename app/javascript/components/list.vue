@@ -74,7 +74,6 @@ export default {
         data: data,
         dataType: "json",
         success: (data) => {
-          this.$store.commit('addCard', data)
           this.message = ""
           this.$nextTick(() => {
             this.$refs.message.focus()
