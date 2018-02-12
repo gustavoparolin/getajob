@@ -7,6 +7,7 @@
 <script>
 import draggable from 'vuedraggable'
 import list from 'components/list'
+
 export default {
   components: { draggable, list },
   props: ["original_lists"],
@@ -22,7 +23,8 @@ export default {
       data.append("list[position]", event.newIndex + 1)
 
       Rails.ajax({
-        url: `/boards/${this.lists[event.newIndex].board_id}/lists/${this.lists[event.newIndex].slug}/move`,
+        url: `/lists/${this.lists[event.newIndex].id}/move`,
+        // url: `/boards/${this.lists[event.newIndex].board_id}/lists/${this.lists[event.newIndex].slug}/move`,
         type: "PATCH",
         data: data,
         dataType: "json",

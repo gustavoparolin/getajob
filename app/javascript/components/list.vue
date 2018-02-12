@@ -3,9 +3,7 @@
     <h6>{{ list.position }} - {{ list.name }}</h6>
 
     <draggable v-model="list.cards" :options="{ group: 'cards' }" class="dragArea" @change="cardMoved">
-      <div v-for="(card, index) in list.cards" class="card card-body mb-3">
-        {{ card.name }}
-      </div>
+      <card v-for="card in list.cards" :card='card' :list='list'></card>
     </draggable>
 
     <a v-if="!editing" v-on:click="startEditing()">Add a card</a>
@@ -17,9 +15,10 @@
 
 <script>
 import draggable from 'vuedraggable'
+import card from 'components/card'
 
 export default {
-  components: { draggable },
+  components: { card, draggable },
   props: ["list"],
 
   data: function(){
@@ -54,7 +53,7 @@ export default {
       data.append("card[position]", evt.newIndex + 1)
 
       Rails.ajax({
-        url: `/boards/${window.store.lists[list_index].board_id}/cards/${element.id}/move`,
+        url: `/cards/${element.id}/move`,
         type: "PATCH",
         data: data,
         dataType: "json",
@@ -69,7 +68,8 @@ export default {
       if (this.message == undefined) { return }
 
       Rails.ajax({
-        url: `/lists/${this.list.id}/cards`,
+        url: `/cards`,
+        // url: `/lists/${this.list.id}/cards`,
         type: "POST",
         data: data,
         dataType: "json",

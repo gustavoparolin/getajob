@@ -1,14 +1,14 @@
 {
-  "application-lixo.js": "/packs/application-lixo-33a0b68d3a5ce5573f46.js",
-  "application-lixo.js.map": "/packs/application-lixo-33a0b68d3a5ce5573f46.js.map",
-  "application.css": "/packs/application-39f6cc0a4229a94d282b5fa3eee62c49.css",
-  "application.css.map": "/packs/application-39f6cc0a4229a94d282b5fa3eee62c49.css.map",
-  "application.js": "/packs/application-5823e85a825f193eeab3.js",
-  "application.js.map": "/packs/application-5823e85a825f193eeab3.js.map",
-  "client.js": "/packs/client-67c24552a5e5aa0f9e97.js",
-  "client.js.map": "/packs/client-67c24552a5e5aa0f9e97.js.map",
-  "hello_vue.css": "/packs/hello_vue-39f6cc0a4229a94d282b5fa3eee62c49.css",
-  "hello_vue.css.map": "/packs/hello_vue-39f6cc0a4229a94d282b5fa3eee62c49.css.map",
-  "hello_vue.js": "/packs/hello_vue-6a2b44a25fd84ca39ed2.js",
-  "hello_vue.js.map": "/packs/hello_vue-6a2b44a25fd84ca39ed2.js.map"
+  "application-lixo.js": "/packs/application-lixo-534f70bc620cd6a5770a.js",
+  "application-lixo.js.map": "/packs/application-lixo-534f70bc620cd6a5770a.js.map",
+  "application.css": "/packs/application-3adcd8a045919a41fba287dfed90da07.css",
+  "application.css.map": "/packs/application-3adcd8a045919a41fba287dfed90da07.css.map",
+  "application.js": "/packs/application-451cae5767f00eef13ec.js",
+  "application.js.map": "/packs/application-451cae5767f00eef13ec.js.map",
+  "client.js": "/packs/client-037b31223f98dc6e9208.js",
+  "client.js.map": "/packs/client-037b31223f98dc6e9208.js.map",
+  "hello_vue.css": "/packs/hello_vue-3adcd8a045919a41fba287dfed90da07.css",
+  "hello_vue.css.map": "/packs/hello_vue-3adcd8a045919a41fba287dfed90da07.css.map",
+  "hello_vue.js": "/packs/hello_vue-3b327d1e99ef0a38637c.js",
+  "hello_vue.js.map": "/packs/hello_vue-3b327d1e99ef0a38637c.js.map"
 }
