@@ -1,12 +1,11 @@
 <template>
   <draggable v-model="lists" :options="{ group: 'lists' }" class="board dragArea" @end="listMoved">
-    <list v-for="(list, index) in original_lists" :list="list"></list>
-
+    <list v-for="(list, index) in lists" :list="list"></list>
 
     <div class="list">
       <a v-if="!editing" v-on:click="startEditing()">Add a list</a>
       <textarea v-if="editing" ref="message" v-model="message" class="form-control mb-1"></textarea>
-      <button v-if="editing" v-on:click="submitMessage" class="btn btn-secondary">Add</button>
+      <button v-if="editing" v-on:click="createList" class="btn btn-secondary">Add</button>
       <a v-if="editing" v-on:click="editing=false">Cancel</a>
     </div>
   </draggable>
@@ -18,14 +17,27 @@ import list from 'components/list'
 
 export default {
   components: { draggable, list },
-  props: ["original_lists"],
+
   data: function() {
     return {
-      lists: this.original_lists,
       editing: false,
       message: "",
     }
   },
+
+  computed: {
+  lists() {
+    return this.$store.state.lists;
+
+    // get() {
+    //   return this.$store.state.lists
+    // },
+    // set(value) {
+    //   this.$store.state.lists = value
+    // },
+  },
+},
+
   methods: {
     startEditing: function(){
       this.editing = true
@@ -47,20 +59,21 @@ export default {
       })
     },
 
-    submitMessage: function() {
+    createList: function() {
       var data = new FormData
-      data.append("list[board_id]", board.id)
+      // data.append("list[board_id]", board.id)
       data.append("list[name]", this.message)
 
       if (this.message == undefined) { return }
 
       Rails.ajax({
-        url: `/boards/${this.board.id}/lists`,
+        url: `/lists`,
+        // url: `/boards/${this.board.id}/lists`,
         type: "POST",
         data: data,
         dataType: "json",
         success: (data) => {
-          window.store.lists.push(data)
+          this.$store.commit('addList', data)
           this.message = ""
           this.editing = false
         }
