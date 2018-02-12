@@ -4,14 +4,5 @@
 <%= link_to 'Edit', edit_board_path(@board) %> |
 <%= link_to 'Back', boards_path %>
 
-<hr>
-
-<% if can?(:crud, @board) %>
-  <%= simple_form_for([@board, @list], :html => { :class => 'form-inline' }) do |form| %>
-    <%= form.input :name, label: false %>
-    <%= form.submit 'Add list' %>
-  <% end %>
-<% end %>
-
 <h3>Lists</h3>
 <%= tag.div id: :boards, data: { board_id: @board.id , lists: @lists.to_json(include: :cards)} %>

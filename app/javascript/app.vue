@@ -1,9 +1,9 @@
 <template>
-  <draggable v-model="lists" :options="{ group: 'lists' }" class="board dragArea" @end="listMoved">
+  <draggable v-model="lists" :options="{group: 'lists'}" class="board dragArea" @end="listMoved">
     <list v-for="(list, index) in lists" :list="list"></list>
 
     <div class="list">
-      <a v-if="!editing" v-on:click="startEditing()">Add a list</a>
+      <a v-if="!editing" v-on:click="startEditing">Add a List</a>
       <textarea v-if="editing" ref="message" v-model="message" class="form-control mb-1"></textarea>
       <button v-if="editing" v-on:click="createList" class="btn btn-secondary">Add</button>
       <a v-if="editing" v-on:click="editing=false">Cancel</a>
@@ -26,24 +26,20 @@ export default {
   },
 
   computed: {
-  lists() {
-    return this.$store.state.lists;
-
-    // get() {
-    //   return this.$store.state.lists
-    // },
-    // set(value) {
-    //   this.$store.state.lists = value
-    // },
+    lists: {
+      get() {
+        return this.$store.state.lists
+      },
+      set(value) {
+        this.$store.state.lists = value
+      },
+    },
   },
-},
 
   methods: {
-    startEditing: function(){
+    startEditing: function() {
       this.editing = true
-      this.$nextTick(() => {
-        this.$refs.message.focus()
-      })
+      this.$nextTick(() => { this.$refs.message.focus() })
     },
 
     listMoved: function(event) {
@@ -52,7 +48,6 @@ export default {
 
       Rails.ajax({
         url: `/lists/${this.lists[event.newIndex].id}/move`,
-        // url: `/boards/${this.lists[event.newIndex].board_id}/lists/${this.lists[event.newIndex].slug}/move`,
         type: "PATCH",
         data: data,
         dataType: "json",

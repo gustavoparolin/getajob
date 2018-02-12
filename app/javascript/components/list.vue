@@ -1,12 +1,12 @@
 <template>
   <div class="list">
-    <h6>{{ list.position }} - {{ list.name }}</h6>
+    <h6>{{ list.name }}</h6>
 
     <draggable v-model="list.cards" :options="{ group: 'cards' }" class="dragArea" @change="cardMoved">
-      <card v-for="card in list.cards" :card='card' :list='list'></card>
+      <card v-for="card in list.cards" :key="card.id" :card="card" :list="list"></card>
     </draggable>
 
-    <a v-if="!editing" v-on:click="startEditing()">Add a card</a>
+    <a v-if="!editing" v-on:click="startEditing">Add a card</a>
     <textarea v-if="editing" ref="message" v-model="message" class="form-control mb-1"></textarea>
     <button v-if="editing" v-on:click="createCard" class="btn btn-secondary">Add</button>
     <a v-if="editing" v-on:click="editing=false">Cancel</a>
@@ -31,14 +31,11 @@ export default {
   methods: {
     startEditing: function(){
       this.editing = true
-      this.$nextTick(() => {
-        this.$refs.message.focus()
-      })
+      this.$nextTick(() => { this.$refs.message.focus() })
     },
 
     cardMoved: function(event) {
       const evt = event.added || event.moved
-
       if (evt == undefined) { return }
 
       const element = evt.element
@@ -56,7 +53,7 @@ export default {
         url: `/cards/${element.id}/move`,
         type: "PATCH",
         data: data,
-        dataType: "json",
+        dataType: "json"
       })
     },
 
@@ -69,15 +66,12 @@ export default {
 
       Rails.ajax({
         url: `/cards`,
-        // url: `/lists/${this.list.id}/cards`,
         type: "POST",
         data: data,
         dataType: "json",
         success: (data) => {
           this.message = ""
-          this.$nextTick(() => {
-            this.$refs.message.focus()
-          })
+          this.$nextTick(() => { this.$refs.message.focus() })
         }
       })
     }
@@ -87,7 +81,7 @@ export default {
 
 <style scoped>
 .dragArea {
-  min-height: 30px;
+  min-height: 20px;
 }
 
 </style>
