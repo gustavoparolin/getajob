@@ -5,6 +5,7 @@ uploads
 2018-*
 thrash
 config/initializers/app_keys.rb
+git_workflow.md
 
 ### React ###
 public/packs
