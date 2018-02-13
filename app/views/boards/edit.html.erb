@@ -1,6 +1,23 @@
-<h1>Editing Board</h1>
 
-<%= render 'form', board: @board %>
+<form novalidate="novalidate" class="form-signin my-3 p-3 bg-white rounded box-shadow" action="<%= board_path(@board) %>" id="edit_board" accept-charset="UTF-8" method="post">
 
-<%= link_to 'Show', @board %> |
-<%= link_to 'Back', boards_path %>
+  <input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
+  <input type="hidden" name="_method" value="patch">
+  <div class="text-center mb-4">
+    <h1 class="h3 mb-3 font-weight-normal">Edit board</h1>
+  </div>
+  <div class="form-label-group">
+    <input id="board_name" class="form-control" type="text" name="board[name]"  placeholder="Board Name" value="<%= @board.name %>" required autofocus>
+    <label for="board_name">Board Name</label>
+  </div>
+  <div class="form-label-group">
+    <input id="board_background_color" class="form-control" type="color" name="board[background_color]" value="<%= @board.background_color %>" list="colors">
+    <label for="board_background_color">Color</label>
+  </div>
+  <div class="text-center mb-4">
+    <button class="btn btn-custom btn-inline" type="submit">Update board</button>
+
+    <%= link_to "Cancel", boards_path, class: "btn btn-outline-custom btn-inline" %>
+  </div>
+
+</form>
