@@ -6,6 +6,6 @@ class Card < ApplicationRecord
   extend FriendlyId
   friendly_id :name, use: [:slugged, :history, :finders]
 
-  scope :sorted, -> { order(position: :asc)}
+  scope :sorted, -> { order(position: :asc, updated_at: :desc)}
   validates :name, presence: true
 end
