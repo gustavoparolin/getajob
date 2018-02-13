@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="card lists-page-section-list-item shadow hvr-rotate">
-      <div class="card-header" style="background-color: 'grey';"></div>
+      <div class="card-header bg-custom"></div>
       <div class="card-body" style="cursor: pointer;" @click="editing=true">
         <h6 class="card-title">{{card.name}}</h6>
       </div>
