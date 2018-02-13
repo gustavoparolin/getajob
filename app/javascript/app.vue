@@ -1,5 +1,5 @@
 <template>
-  <draggable v-model="lists" :options="{group: 'lists'}" class="board dragArea" @end="listMoved">
+  <draggable v-model="lists" :options="{group: 'lists'}" class="board list-dragArea" @end="listMoved">
     <list v-for="(list, index) in lists" :list="list"></list>
 
     <div class="list">
@@ -78,20 +78,4 @@ export default {
 </script>
 
 <style scoped>
-  .dragArea {
-    min-height: 30px;
-  }
-  .board {
-    overflow-x: auto;
-    white-space: nowrap;
-  }
-  .list {
-    background: #E2E4E6;
-    border-radius: 3px;
-    display: inline-block;
-    margin-right: 20px;
-    padding: 10px;
-    vertical-align: top;
-    width: 270px;
-  }
 </style>

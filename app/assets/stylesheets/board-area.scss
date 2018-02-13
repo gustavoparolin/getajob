@@ -1,0 +1,170 @@
+.card-title {
+  font-family: 'Roboto Condensed', sans-serif !important;
+  font-size: 1.5em;
+}
+
+.boards-page-board-section {
+  margin: 0 auto;
+  max-width: 1250px;
+  padding: 20px 16px 0;
+}
+.boards-page-board-section-list {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+}
+
+.boards-page-board-section-list-item {
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  position: relative;
+  width: calc(25% - 20px);
+  margin-right: 20px;
+  margin-bottom: 20px;
+}
+@media only screen and (max-width: 1280px) and (min-width: 901px) {
+  .boards-page-board-section-list-item {
+    width: calc(25% - 20px);
+  }
+}
+@media  only screen and (max-width: 900px) and (min-width: 751px),
+        only screen and (max-width: 1280px) and (min-width: 901px) {
+  .boards-page-board-section-list-item {
+    width: calc(33% - 20px);
+  }
+}
+@media only screen and (max-width: 750px) {
+  #inputSearch {
+    display: none;
+  }
+  .boards-page-board-section-list-item {
+    width: calc(100% - 20px);
+  }
+}
+
+.lists-page-section {
+  white-space: nowrap;
+  margin-bottom: 10px;
+  overflow-x: auto;
+  overflow-y: hidden;
+  padding-bottom: 10px;
+  padding-right: 56px;
+  min-height: calc(100vh - 230px);
+  // background-color: black;
+}
+
+.lists-page-section-list {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+}
+
+.lists-page-section-list-item {
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  position: relative;
+  width: 100%;
+  // margin: 0 10px 20px 10px;
+  margin-bottom: 20px;
+  min-height: 80px;
+}
+
+.list-dragArea  {
+  min-height: calc(100vh - 230px);
+  // background-color: red;
+}
+
+.list:first-child {
+    margin-left: 10px;
+}
+.list {
+    width: 270px;
+    margin: 5px;
+    height: 100%;
+    display: inline-block;
+    border-radius: 3px;
+    padding: 10px;
+    // background: #E2E4E6;
+
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    display: inline-block;
+    vertical-align: top;
+    white-space: nowrap;
+}
+
+.list-old {
+  width: 270px;
+  margin-right: 20px;
+  padding: 10px;
+  vertical-align: top;
+}
+
+
+.card-board-link {
+  font-size: 1.3em;
+  margin-left: 15px;
+  color: #4e0a68 !important;
+}
+
+.card-board-link:hover {
+  box-shadow:0 2px 5px 0 rgba(0,0,0,0.16),0 2px 10px 0 rgba(0,0,0,0.12) !important;
+}
+
+.form-control[type=color] {
+    height: auto;
+}
+
+/* Need styles for -webkit- and -moz- */
+
+.form-control[type=color]::-webkit-color-swatch-wrapper {
+  padding: 0;
+  margin: 0;
+}
+.form-control[type=color]:-moz-color-swatch-wrapper {
+  padding: 0;
+  margin: 0;
+}
+.form-control[type=color]:-ms-color-swatch-wrapper {
+  padding: 0;
+  margin: 0;
+}
+
+.form-control[type=color][list="colors"]::-webkit-color-swatch-wrapper {
+  padding: .5rem .75rem;
+}
+.form-control[type=color][list="colors"]:-moz-color-swatch-wrapper {
+  padding: .5rem .75rem;
+}
+.form-control[type=color][list="colors"]:-ms-color-swatch-wrapper {
+  padding: .5rem .75rem;
+}
+
+.form-control[type=color]::-webkit-color-swatch {
+  height: 22px; /* font-size + line-height */
+  padding: 0;
+  margin: 0;
+}
+.form-control[type=color]::-moz-color-swatch {
+  height: 22px; /* font-size + line-height */
+  padding: 0;
+  margin: 0;
+}
+.form-control[type=color]:-ms-color-swatch {
+  height: 22px; /* font-size + line-height */
+  padding: 0;
+  margin: 0;
+}
+.card-dragArea  {
+  min-height: 50px;
+  // border: 1px #DADADA dashed;
+}
+
+.board {
+  // overflow-x: auto;
+  // white-space: nowrap;
+}

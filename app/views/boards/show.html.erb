@@ -1,7 +1,11 @@
-<h1>Board: <%= @board.name %></h1>
+<h1 class="navbar-brand"><%= @board.name %></h1>
+<div class="lists-page-section">
+  <div class="lists-page-section-list">
+
+  <%= tag.div id: :boards, data: { board_id: @board.id , lists: @lists.to_json(include: :cards)} %>
+
+  </div>
+</div>
 
 <%= link_to 'Edit', edit_board_path(@board) %> |
 <%= link_to 'Back', boards_path %>
-
-<h3>Lists</h3>
-<%= tag.div id: :boards, data: { board_id: @board.id , lists: @lists.to_json(include: :cards)} %>
