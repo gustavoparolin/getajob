@@ -52,7 +52,6 @@
   padding-bottom: 10px;
   padding-right: 56px;
   min-height: calc(100vh - 230px);
-  // background-color: black;
 }
 
 .lists-page-section-list {
@@ -75,7 +74,6 @@
 
 .list-dragArea  {
   min-height: calc(100vh - 230px);
-  // background-color: red;
 }
 
 .list:first-child {
@@ -88,8 +86,6 @@
     display: inline-block;
     border-radius: 3px;
     padding: 10px;
-    // background: #E2E4E6;
-
     -webkit-box-sizing: border-box;
     box-sizing: border-box;
     display: inline-block;

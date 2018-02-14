@@ -26,9 +26,9 @@
               </li>
             </ul>
           </div>
-          <div class="modal-header">
+          <!-- <div class="modal-header">
             <h5 class="modal-title">{{ card.name }}</h5>
-          </div>
+          </div> -->
           <div class="modal-body card-body">
             <input v-model="name" class="form-control"></input>
             <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>

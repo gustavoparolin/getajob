@@ -3,7 +3,7 @@
     <list v-for="(list, index) in lists" :list="list"></list>
 
     <div class="list">
-      <a v-if="!editing" v-on:click="startEditing">Add a List</a>
+      <a v-if="!editing" v-on:click="startEditing" class="btn btn-secondary btn-sm">Add a list...</a>
       <textarea v-if="editing" ref="message" v-model="message" class="form-control mb-1"></textarea>
       <button v-if="editing" v-on:click="createList" class="btn btn-secondary">Add</button>
       <a v-if="editing" v-on:click="editing=false">Cancel</a>
@@ -62,8 +62,7 @@ export default {
       if (this.message == undefined) { return }
 
       Rails.ajax({
-        url: `/boards/26/lists`,
-        // url: `/boards/${this.board.id}/lists`,
+        url: `/boards/34/lists`,
         type: "POST",
         data: data,
         dataType: "json",
