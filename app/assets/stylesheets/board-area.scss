@@ -90,7 +90,7 @@
     box-sizing: border-box;
     display: inline-block;
     vertical-align: top;
-    white-space: nowrap;
+    white-space: normal !important;
 }
 
 .list-old {
@@ -112,7 +112,7 @@
 }
 
 .form-control[type=color] {
-    height: auto;
+  height: auto;
 }
 
 /* Need styles for -webkit- and -moz- */

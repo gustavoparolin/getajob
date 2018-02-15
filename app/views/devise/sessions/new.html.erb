@@ -1,51 +1,54 @@
-<form novalidate="novalidate" class="form-signin my-3 p-3 bg-white rounded box-shadow" action="<%= session_path(resource_name) %>" id="new_user" accept-charset="UTF-8" method="post">
+<%= render 'shared/home_text' %>
+<div id="homeForm">
+  <form novalidate="novalidate" class="form-signin my-3 p-3 bg-white rounded box-shadow" action="<%= session_path(resource_name) %>" id="new_user" accept-charset="UTF-8" method="post">
 
-  <input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
+    <input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
 
-  <div class="text-center mb-4">
-    <h1 class="h3 mb-3 font-weight-normal">Login / New Session</h1>
-  </div>
-  <div class="form-label-group">
-    <input id="user_email" class="form-control" type="email" name="user[email]"  placeholder="Email address" required>
-    <label for="user_email">Email address</label>
-  </div>
-  <div class="form-label-group">
-    <input maxlength="128" id="user_password" type="password" name="user[password]" class="form-control" placeholder="Password" required>
-    <label for="user_password">Password</label>
-  </div>
-  <div class="checkbox mb-3">
-    <label>
-      <input type="hidden" name="user[remember_me]" value="0">
-      <input type="checkbox" name="user[remember_me]" id="user_remember_me" value="1"> Remember me
-    </label>
-  </div>
-  <div class="text-center mb-4">
-    <button class="btn btn-lg btn-custom btn-block" type="submit">Login</button>
+    <div class="text-center mb-4">
+      <h1 class="h3 mb-3 font-weight-normal">Login / New Session</h1>
+    </div>
+    <div class="form-label-group">
+      <input id="user_email" class="form-control" type="email" name="user[email]"  placeholder="Email address" required>
+      <label for="user_email">Email address</label>
+    </div>
+    <div class="form-label-group">
+      <input maxlength="128" id="user_password" type="password" name="user[password]" class="form-control" placeholder="Password" required>
+      <label for="user_password">Password</label>
+    </div>
+    <div class="checkbox mb-3">
+      <label>
+        <input type="hidden" name="user[remember_me]" value="0">
+        <input type="checkbox" name="user[remember_me]" id="user_remember_me" value="1"> Remember me
+      </label>
+    </div>
+    <div class="text-center mb-4">
+      <button class="btn btn-lg btn-custom btn-block" type="submit">Login</button>
 
-    <br>
-    <%- if devise_mapping.registerable? && controller_name != 'registrations' %>
-      <%= link_to "Sign up", new_registration_path(resource_name), class: "btn btn-sm btn-outline-custom btn-inline" %>
-    <% end -%>
+      <br>
+      <%- if devise_mapping.registerable? && controller_name != 'registrations' %>
+        <%= link_to "Sign up", new_registration_path(resource_name), class: "btn btn-sm btn-outline-custom btn-inline" %>
+      <% end -%>
 
-    <%- if devise_mapping.recoverable? && controller_name != 'passwords' && controller_name != 'registrations' %>
-    <%= link_to "Forgot your password?", new_password_path(resource_name), class: "btn btn-sm btn-outline-custom btn-inline" %>
-    <% end -%>
+      <%- if devise_mapping.recoverable? && controller_name != 'passwords' && controller_name != 'registrations' %>
+      <%= link_to "Forgot your password?", new_password_path(resource_name), class: "btn btn-sm btn-outline-custom btn-inline" %>
+      <% end -%>
 
-    <div class="menu-divider">
-      <hr>
-      <div class="divider-text text-sm text-muted">OR</div>
+      <div class="menu-divider">
+        <hr>
+        <div class="divider-text text-sm text-muted">OR</div>
+      </div>
+
+      <a class="btn btn-sm btn-outline-linkedin btn-inline" href="<%= user_linkedin_omniauth_authorize_path %>"><i class="fa fa-linkedin-square" aria-hidden="true"></i> Login with LinkedIn</a>
+
+      <div class="menu-divider">
+        <hr>
+        <div class="divider-text text-sm text-muted">OR</div>
+      </div>
     </div>
 
-    <a class="btn btn-sm btn-outline-linkedin btn-inline" href="<%= user_linkedin_omniauth_authorize_path %>"><i class="fa fa-linkedin-square" aria-hidden="true"></i> Login with LinkedIn</a>
+    <%- if devise_mapping.confirmable? && controller_name != 'confirmations' %>
+      <%= link_to "Didn't receive confirmation instructions?", new_confirmation_path(resource_name) %><br />
+    <% end -%>
 
-    <div class="menu-divider">
-      <hr>
-      <div class="divider-text text-sm text-muted">OR</div>
-    </div>
-  </div>
-
-  <%- if devise_mapping.confirmable? && controller_name != 'confirmations' %>
-    <%= link_to "Didn't receive confirmation instructions?", new_confirmation_path(resource_name) %><br />
-  <% end -%>
-
-</form>
+  </form>
+</div>

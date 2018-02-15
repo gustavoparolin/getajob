@@ -12,13 +12,18 @@
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  height: 100vh;
+  height: calc(100vh - 60px);
+}
+
+#homeNavBar, .navbar {
+  justify-content: center !important;
+  display: flex;
 }
 
 #homeTextContainer {
   width: calc(90% - 350px);
   min-width: 350px;
-  max-height: 570px;
+  max-height: 540px;
   background-color: rgba(0,0,0,0.7);
   border-radius: 15px;
   margin: 20px;
@@ -33,6 +38,29 @@
   align-self: center;
 }
 #homeText h1 {
+  font-size: 3.5em !important;
+  margin-top: -50px;
+}
+
+#aboutTextContainer {
+  width: calc(95% - 100px);
+  min-width: 350px;
+  max-width: 1300px;
+  height: calc(100vh - 100px);
+  background-color: rgba(255,255,255,0.90);
+  border-radius: 15px;
+  margin: 20px;
+  padding: 30px 20px;
+  display: flex;
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+
+#aboutText{
+  font-family: fantasy;
+  padding: 20px;
+}
+#aboutText h1 {
   font-size: 3.5em !important;
   margin-top: -50px;
 }
