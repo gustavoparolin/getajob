@@ -68,6 +68,6 @@ class CardsController < InheritedResources::Base
     end
 
     def card_params
-      params.require(:card).permit(:name, :position, :slug, :list_id, :background_color, :status)
+      params.require(:card).permit(:name, :position, :slug, :list_id, :background_color, :status, :description, :job_position, :url, :font, :location, :salary, :salary_currency, :salary_period, :employment_type, :work_hours, :time_commute, :distance_commute, :resume_file, :cover_letter, :accept_remote, :date_posted, :due_date, :education_requirements, :language_requeriments, :experience_requirements, :responsabilities, :qualifications, :skills, :incentive_compensation, :benefits)
     end
 end

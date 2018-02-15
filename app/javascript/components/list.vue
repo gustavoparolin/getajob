@@ -48,6 +48,7 @@ export default {
       var data = new FormData
       data.append("card[list_id]", window.store.state.lists[list_index].id)
       data.append("card[position]", evt.newIndex + 1)
+      data.append("card[background_color]", this.background_color)
 
       Rails.ajax({
         url: `/cards/${element.id}/move`,

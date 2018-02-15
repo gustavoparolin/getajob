@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180213213100) do
+ActiveRecord::Schema.define(version: 20180215090733) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -68,6 +68,31 @@ ActiveRecord::Schema.define(version: 20180213213100) do
     t.datetime "updated_at", null: false
     t.string "background_color", default: "#999999"
     t.boolean "status", default: true
+    t.text "description"
+    t.string "job_position"
+    t.string "url"
+    t.string "font"
+    t.string "location"
+    t.float "salary"
+    t.string "salary_currency", default: "CAD"
+    t.string "salary_period", default: "Annual"
+    t.string "employment_type"
+    t.string "work_hours"
+    t.datetime "time_commute"
+    t.float "distance_commute"
+    t.string "resume_file"
+    t.text "cover_letter"
+    t.boolean "accept_remote", default: false
+    t.datetime "date_posted"
+    t.datetime "due_date"
+    t.text "education_requirements"
+    t.text "language_requeriments"
+    t.text "experience_requirements"
+    t.text "responsabilities"
+    t.text "qualifications"
+    t.text "skills"
+    t.text "incentive_compensation"
+    t.text "benefits"
     t.index ["list_id"], name: "index_cards_on_list_id"
     t.index ["name"], name: "index_cards_on_name"
     t.index ["slug"], name: "index_cards_on_slug"
