@@ -1,38 +1,41 @@
-<form novalidate="novalidate" class="form-signin my-3 p-3 bg-white rounded box-shadow" action="<%= confirmation_path(resource_name) %>" id="new_user" accept-charset="UTF-8" method="post">
+<%= render 'shared/home_text' %>
+<div id="homeForm">
+  <form novalidate="novalidate" class="form-signin my-3 p-3 bg-white rounded box-shadow" action="<%= confirmation_path(resource_name) %>" id="new_user" accept-charset="UTF-8" method="post">
 
-  <input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
+    <input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
 
-  <div class="text-center mb-4">
-    <h1 class="h3 mb-3 font-weight-normal">Resend confirmation instructions</h1>
-  </div>
-
-  <div class="form-label-group">
-    <input id="user_email_input" class="form-control" type="email" name="user[email]"  placeholder="Email address" required autofocus>
-    <label for="user_email_input">Email address</label>
-  </div>
-
-  <div class="text-center mb-4">
-    <button class="btn btn-lg btn-custom btn-block" type="submit">Resend confirmation instructions</button>
-
-    <div class="menu-divider">
-      <hr>
-      <div class="divider-text text-sm text-muted">OR</div>
+    <div class="text-center mb-4">
+      <h1 class="h3 mb-3 font-weight-normal">Resend confirmation instructions</h1>
     </div>
 
-    <%- if controller_name != 'sessions' %>
-      <%= link_to "Login", new_session_path(resource_name), class: "btn btn-sm btn-outline-custom btn-inline" %>
-    <% end -%>
-    <%- if devise_mapping.registerable? && controller_name != 'registrations' %>
-      <%= link_to "Sign up", new_registration_path(resource_name), class: "btn btn-sm btn-outline-custom btn-inline" %>
-    <% end -%>
-
-    <div class="menu-divider">
-      <hr>
-      <div class="divider-text text-sm text-muted">OR</div>
+    <div class="form-label-group">
+      <input id="user_email_input" class="form-control" type="email" name="user[email]"  placeholder="Email address" required autofocus>
+      <label for="user_email_input">Email address</label>
     </div>
 
-    <%- if devise_mapping.omniauthable? %>
-      <a class="btn btn-lg btn-outline-linkedin btn-inline" href="<%= user_linkedin_omniauth_authorize_path %>"><i class="fa fa-linkedin-square" aria-hidden="true"></i> Login with LinkedIn</a>
-    <% end -%>
-  </div>
-</form>
+    <div class="text-center mb-4">
+      <button class="btn btn-lg btn-custom btn-block" type="submit">Resend confirmation instructions</button>
+
+      <div class="menu-divider">
+        <hr>
+        <div class="divider-text text-sm text-muted">OR</div>
+      </div>
+
+      <%- if controller_name != 'sessions' %>
+        <%= link_to "Login", new_session_path(resource_name), class: "btn btn-sm btn-outline-custom btn-inline" %>
+      <% end -%>
+      <%- if devise_mapping.registerable? && controller_name != 'registrations' %>
+        <%= link_to "Sign up", new_registration_path(resource_name), class: "btn btn-sm btn-outline-custom btn-inline" %>
+      <% end -%>
+
+      <div class="menu-divider">
+        <hr>
+        <div class="divider-text text-sm text-muted">OR</div>
+      </div>
+
+      <%- if devise_mapping.omniauthable? %>
+        <a class="btn btn-lg btn-outline-linkedin btn-inline" href="<%= user_linkedin_omniauth_authorize_path %>"><i class="fa fa-linkedin-square" aria-hidden="true"></i> Login with LinkedIn</a>
+      <% end -%>
+    </div>
+  </form>
+</div>

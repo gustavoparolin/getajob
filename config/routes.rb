@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
-
+  resources :about, only: [:index]
+  
   resources :lists, only: [] do
     member do
       patch :move

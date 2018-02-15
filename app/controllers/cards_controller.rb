@@ -68,6 +68,6 @@ class CardsController < InheritedResources::Base
     end
 
     def card_params
-      params.require(:card).permit(:name, :position, :slug, :list_id)
+      params.require(:card).permit(:name, :position, :slug, :list_id, :background_color, :status)
     end
 end

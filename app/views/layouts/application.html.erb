@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="en">
   <head>
-    <link rel="icon" href="../../../../favicon.ico">
+    <link rel="icon" href="/assets/favicon.ico">
     <title>Get a Job</title>
     <%= csrf_meta_tags %>
 
@@ -11,19 +11,12 @@
 
   <body>
     <div id="homeMain">
+      <nav class="homeNavBar navbar navbar-dark bg-transparent">
+        <a href="/" class="btn btn-menu btn-custom btn-sm">Home</a>
+        <a href="/about" class="btn btn-menu btn-custom btn-sm">About</a>
+      </nav>
     <div class="container" id="homeContent">
-      <div id="homeTextContainer">
-
-        <div id="homeText">
-          <h1 class="navbar-brand">Get a Job</h1>
-          <h3>Your personal assistent, helping you with your job applications</h3>
-          <br>
-          <h5>No more messy spreadsheets. <strong>Get a Job</strong> keeps track of every detail about your job applications - notes, dates, tasks, job descriptions, salaries, locations, company data and more.</h5>
-        </div>
-      </div>
-      <div id="homeForm">
-        <%= yield %>
-      </div>
+      <%= yield %>
     </div>
   </div>
   </body>

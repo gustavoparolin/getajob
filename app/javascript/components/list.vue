@@ -1,15 +1,15 @@
 <template>
-  <div class="list">
-    <h6>{{ list.name }}</h6>
+  <div class="list shadow">
+    <h5 class="text-center">{{ list.name }}</h5>
 
-    <draggable v-model="list.cards" :options="{ group: 'cards' }" class="dragArea" @change="cardMoved">
+    <draggable v-model="list.cards" :options="{ group: 'cards' }" class="card-dragArea" @change="cardMoved">
       <card v-for="card in list.cards" :key="card.id" :card="card" :list="list"></card>
     </draggable>
 
-    <a v-if="!editing" v-on:click="startEditing">Add a card</a>
+    <a v-if="!editing" v-on:click="startEditing" class="btn btn-outline-secondary btn-sm">Add a card</a>
     <textarea v-if="editing" ref="message" v-model="message" class="form-control mb-1"></textarea>
-    <button v-if="editing" v-on:click="createCard" class="btn btn-secondary">Add</button>
-    <a v-if="editing" v-on:click="editing=false">Cancel</a>
+    <button v-if="editing" v-on:click="createCard" class="btn btn-secondary btn-sm">Add</button>
+    <a v-if="editing" v-on:click="editing=false" class="btn btn-outline-danger btn-sm">Cancel</a>
   </div>
 </template>
 
@@ -80,8 +80,4 @@ export default {
 </script>
 
 <style scoped>
-.dragArea {
-  min-height: 20px;
-}
-
 </style>
