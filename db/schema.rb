@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180215090733) do
+ActiveRecord::Schema.define(version: 20180215170242) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -93,6 +93,8 @@ ActiveRecord::Schema.define(version: 20180215090733) do
     t.text "skills"
     t.text "incentive_compensation"
     t.text "benefits"
+    t.float "latitude"
+    t.float "longitude"
     t.index ["list_id"], name: "index_cards_on_list_id"
     t.index ["name"], name: "index_cards_on_name"
     t.index ["slug"], name: "index_cards_on_slug"
