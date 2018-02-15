@@ -13,25 +13,26 @@
     <div v-if='editing' @click="closeModal" class="modal show" style="display: block">
       <div class="modal-dialog">
         <div class="modal-content">
-          <div class="card-header">
-            <ul class="nav nav-tabs card-header-tabs">
-              <li class="nav-item">
-                <a class="nav-link active" href="#">Job</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#">Company</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#">Notes</a>
-              </li>
-            </ul>
-          </div>
-          <!-- <div class="modal-header">
-            <h5 class="modal-title">{{ card.name }}</h5>
-          </div> -->
-          <div class="modal-body card-body">
-            <input v-model="name" class="form-control"></input>
-            <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+
+          <div class="card text-center">
+            <div class="card-header">
+              <h5 class="modal-title">{{ card.name }}</h5>
+              <br>
+              <ul class="nav nav-tabs card-header-tabs">
+                <li class="nav-item">
+                  <a class="nav-link active" href="#home" data-target="#home" data-toggle="tab">Home</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="#profile" data-target="#profile" data-toggle="tab">Profile</a>
+               </li>
+              </ul>
+            </div>
+            <div class="card-body tab-content modal-body">
+              <div class="tab-pane active fade in" id="home">
+                <input v-model="name" class="form-control"></input>
+              </div>
+              <div class="tab-pane" id="profile">profile tab content</div>
+            </div>
           </div>
           <div class="modal-footer">
             <button @click="save" type="button" class="btn btn-custom">Save changes</button>
@@ -43,6 +44,7 @@
 </template>
 
 <script>
+
 export default {
   props: ['card', 'list'],
   data: function() {

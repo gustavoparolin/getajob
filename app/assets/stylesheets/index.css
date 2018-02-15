@@ -7,10 +7,11 @@ main {
 }
 
 .profile-photo {
-    border-radius: 20%;
-    border: 3px solid #FFF;
-    height: 36px;
-    width: 36px;
+  border-radius: 20%;
+  border: 1px solid #FFF;
+  height: 32px;
+  width: 32px;
+  margin-left: 10px;
 }
 
 .has-error > .help-block {
