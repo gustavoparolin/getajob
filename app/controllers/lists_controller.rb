@@ -56,6 +56,7 @@ class ListsController < ApplicationController
   end
 
   def move
+    # act_as_list have the method insert_at that Change the Position and Reoder the List
     @list.insert_at(list_params[:position].to_i)
     ActionCable.server.broadcast "board", { commit: 'moveList', payload: render_to_string(:show, format: :json) }
     render action: :show
