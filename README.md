@@ -1,11 +1,6 @@
-<img align="right" width="90" height="90" src="https://avatars1.githubusercontent.com/u/6611839?s=200&v=4" alt="CodeCore">
+# Rails / Vue.js project: Get a Job
 
-
-# Rails / React project: Get a Job
-
-## Why?
-
-This is my *Final Project* for **CodeCore developer Bootcamp**
+## Project description
 
 It is a Job Application Manager (Get a Job) and helps people to organize all job applications and track key dates, contacts and job posts.
 
@@ -24,6 +19,6 @@ Open on localhost:3005
 
 ## Technologies used:
 - Ruby on Rails
-- React
+- Vue.js
 - Bootstrap
 - jQuery
